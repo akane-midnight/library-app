@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="initial-schema-setup" author="alla.viflyantseva">
+
+        <createTable tableName="persons">
+            <column name="person_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthday" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="publishers">
+            <column name="publisher_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="publisher_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publisher_city" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="authors">
+            <column name="author_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="author_lastname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_firstname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_first" type="bit">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="genres">
+            <column name="genre_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="genre_name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="books">
+            <column name="book_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_year" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity_page" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publisher_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="publishers"
+                             referencedColumnNames="publisher_id" foreignKeyName="fk_books_publisher_id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="book_exemplars">
+            <column name="book_exemplar_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="book_description" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="books"
+                             referencedColumnNames="book_id" foreignKeyName="fk_bookexemplar_book_id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="book_author">
+            <column name="book_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="books"
+                             referencedColumnNames="book_id" foreignKeyName="fk_ba_book_id"/>
+            </column>
+            <column name="author_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="authors"
+                             referencedColumnNames="author_id" foreignKeyName="fk_ba_author_id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="book_genre">
+            <column name="book_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="books"
+                             referencedColumnNames="book_id" foreignKeyName="fk_bg_book_id"/>
+            </column>
+            <column name="genre_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="genres"
+                             referencedColumnNames="genre_id" foreignKeyName="fk_bg_genre_id"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="book_give_list">
+            <column name="give_id" type="varchar(50)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="book_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="books"
+                             referencedColumnNames="book_id" foreignKeyName="fk_bgl_book_id"/>
+            </column>
+            <column name="person_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="persons"
+                             referencedColumnNames="person_id" foreignKeyName="fk_bgl_person_id"/>
+            </column>
+            <column name="give_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="return_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="real_return_date" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
