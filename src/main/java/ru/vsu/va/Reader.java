@@ -2,18 +2,18 @@ package ru.vsu.va;
 
 import java.sql.Date;
 
-public class Person {
-    private String personId;
+public class Reader {
+    private String readerId;
     private String lastname;
     private String firstname;
     private Date birthday;
 
-    public String getPersonId() {
-        return personId;
+    public String getReaderId() {
+        return readerId;
     }
 
-    public void setPersonId(final String personId) {
-        this.personId = personId;
+    public void setReaderId(final String readerId) {
+        this.readerId = readerId;
     }
 
     public String getLastname() {

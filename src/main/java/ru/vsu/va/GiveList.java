@@ -5,7 +5,7 @@ import java.sql.Date;
 public class GiveList {
     private String giveId;
     private String bookId;
-    private String personId;
+    private String readerId;
     private Date giveDate;
     private Date returnDate;
     private Date realReturnDate;
@@ -26,12 +26,12 @@ public class GiveList {
         this.bookId = bookId;
     }
 
-    public String getPersonId() {
-        return personId;
+    public String getReaderId() {
+        return readerId;
     }
 
-    public void setPersonId(final String personId) {
-        this.personId = personId;
+    public void setReaderId(final String readerId) {
+        this.readerId = readerId;
     }
 
     public Date getGiveDate() {

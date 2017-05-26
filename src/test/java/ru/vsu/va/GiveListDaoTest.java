@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class GiveListDaoTest extends DAOTest {
     private final GiveListDao giveListDao = dbi.onDemand(GiveListDao.class);
     private final BookDao bookDao = dbi.onDemand(BookDao.class);
-    private final PersonDao personDao = dbi.onDemand(PersonDao.class);
+    private final ReaderDao readerDao = dbi.onDemand(ReaderDao.class);
     private final AuthorDao authorDao = dbi.onDemand(AuthorDao.class);
     private final PublisherDao publisherDao = dbi.onDemand(PublisherDao.class);
 
@@ -25,7 +25,7 @@ public class GiveListDaoTest extends DAOTest {
         final GiveList giveList = new GiveList();
         giveList.setGiveId("giveId");
         giveList.setBookId("bookId");
-        giveList.setPersonId("personId");
+        giveList.setReaderId("readerId");
         giveList.setGiveDate(Date.valueOf("2017-05-12"));
         giveList.setReturnDate(Date.valueOf("2017-06-12"));
         //giveList.setRealReturnDate(Date.valueOf("1991-07-12"));
@@ -37,11 +37,11 @@ public class GiveListDaoTest extends DAOTest {
         book.setQuantityPage("1603");
         book.setPublisherId("pubId");
 
-        final Person person = new Person();
-        person.setPersonId("personId");
-        person.setFirstname("Nik");
-        person.setLastname("Nikonovich");
-        person.setBirthday(Date.valueOf("1996-04-15"));
+        final Reader reader = new Reader();
+        reader.setReaderId("readerId");
+        reader.setFirstname("Nik");
+        reader.setLastname("Nikonovich");
+        reader.setBirthday(Date.valueOf("1996-04-15"));
 
         final Author author = new Author();
         author.setAuthorId("authorId");
@@ -58,7 +58,7 @@ public class GiveListDaoTest extends DAOTest {
         bookDao.addBook(book);
         authorDao.addAuthor(author);
         bookDao.addAuthorToBook("bookId", "authorId");
-        personDao.addPerson(person);
+        readerDao.addReader(reader);
         giveListDao.addInGiveList(giveList);
 
         final List<GiveNote> giveNotes = giveListDao.listGiveList();

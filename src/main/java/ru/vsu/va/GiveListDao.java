@@ -12,25 +12,25 @@ import java.util.List;
 
 @RegisterMapper({GiveListMapper.class, GiveNoteMapper.class})
 public interface GiveListDao extends Transactional<GiveListDao> {
-    @SqlUpdate("INSERT INTO book_give_list (give_id, book_id, person_id, give_date, return_date, real_return_date) " +
-            "VALUES (:giveId, :bookId, :personId, :giveDate, :returnDate, :realReturnDate)")
+    @SqlUpdate("INSERT INTO book_give_list (give_id, book_id, reader_id, give_date, return_date, real_return_date) " +
+            "VALUES (:giveId, :bookId, :readerId, :giveDate, :returnDate, :realReturnDate)")
     void addInGiveList(@BindBean GiveList giveList);
 
-    @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, persons.lastname, " +
-            "persons.firstname, book_give_list.give_date, book_give_list.return_date, " +
+    @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, readers.lastname, " +
+            "readers.firstname, book_give_list.give_date, book_give_list.return_date, " +
             "book_give_list.real_return_date FROM book_give_list " +
             "JOIN books ON books.book_id = book_give_list.book_id " +
             "JOIN book_author ON book_author.book_id = book_give_list.book_id " +
             "JOIN authors ON authors.author_id = book_author.author_id " +
-            "JOIN persons ON persons.person_id = book_give_list.person_id " +
+            "JOIN readers ON readers.reader_id = book_give_list.reader_id " +
             "WHERE author_first = true")
     List<GiveNote> listGiveList();
 
-    @SqlQuery("SELECT book_give_list.give_id, books.title, persons.lastname, persons.firstname, " +
+    @SqlQuery("SELECT book_give_list.give_id, books.title, readers.lastname, readers.firstname, " +
             "book_give_list.give_date, book_give_list.return_date, book_give_list.real_return_date " +
             "FROM book_give_list " +
             "JOIN books ON books.book_id = book_give_list.book_id " +
-            "JOIN persons ON persons.person_id = book_give_list.person_id " +
+            "JOIN readers ON readers.reader_id = book_give_list.reader_id " +
             "WHERE return_date = :r_date")
     List<GiveNote> listGiveListByReturnDate(@Bind("date") Date r_date);
 }

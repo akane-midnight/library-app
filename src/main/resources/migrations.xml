@@ -6,8 +6,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
     <changeSet id="initial-schema-setup" author="alla.viflyantseva">
 
-        <createTable tableName="persons">
-            <column name="person_id" type="varchar(50)">
+        <createTable tableName="readers">
+            <column name="reader_id" type="varchar(50)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="firstname" type="varchar(50)">
@@ -119,9 +119,9 @@
                 <constraints nullable="false" referencedTableName="books"
                              referencedColumnNames="book_id" foreignKeyName="fk_bgl_book_id"/>
             </column>
-            <column name="person_id" type="varchar(50)">
-                <constraints nullable="false" referencedTableName="persons"
-                             referencedColumnNames="person_id" foreignKeyName="fk_bgl_person_id"/>
+            <column name="reader_id" type="varchar(50)">
+                <constraints nullable="false" referencedTableName="readers"
+                             referencedColumnNames="reader_id" foreignKeyName="fk_bgl_reader_id"/>
             </column>
             <column name="give_date" type="date">
                 <constraints nullable="false"/>

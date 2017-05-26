@@ -13,7 +13,7 @@ public class GiveListMapper implements ResultSetMapper<GiveList> {
         final GiveList result = new GiveList();
         result.setGiveId(resultSet.getString("give_id"));
         result.setBookId(resultSet.getString("book_id"));
-        result.setPersonId(resultSet.getString("person_id"));
+        result.setReaderId(resultSet.getString("reader_id"));
         result.setGiveDate(resultSet.getDate("give_date"));
         result.setReturnDate(resultSet.getDate("return_date"));
         result.setRealReturnDate(resultSet.getDate("real_return_date"));
