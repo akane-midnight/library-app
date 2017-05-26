@@ -12,9 +12,14 @@ import java.util.List;
 
 @RegisterMapper({GiveListMapper.class, GiveNoteMapper.class})
 public interface GiveListDao extends Transactional<GiveListDao> {
-    @SqlUpdate("INSERT INTO book_give_list (give_id, book_id, reader_id, give_date, return_date, real_return_date) " +
-            "VALUES (:giveId, :bookId, :readerId, :giveDate, :returnDate, :realReturnDate)")
-    void addInGiveList(@BindBean GiveList giveList);
+    @SqlUpdate("INSERT INTO book_give_list (give_id, book_id, reader_id, give_date, return_date) " +
+            "VALUES (:giveId, :bookId, :readerId, :giveDate, :returnDate)")
+    void openGiveNote(@BindBean GiveList giveList);
+
+    @SqlUpdate("UPDATE book_give_list " +
+            "SET real_return_date = :realReturnDate " +
+            "WHERE give_id = :id_give")
+    void closeGiveNote(@Bind("id_give") String giveId);
 
     @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, readers.lastname, " +
             "readers.firstname, book_give_list.give_date, book_give_list.return_date, " +
@@ -32,5 +37,5 @@ public interface GiveListDao extends Transactional<GiveListDao> {
             "JOIN books ON books.book_id = book_give_list.book_id " +
             "JOIN readers ON readers.reader_id = book_give_list.reader_id " +
             "WHERE return_date = :r_date")
-    List<GiveNote> listGiveListByReturnDate(@Bind("date") Date r_date);
+    List<GiveNote> listGiveListByReturnDate(@Bind("r_date") Date rDate);
 }

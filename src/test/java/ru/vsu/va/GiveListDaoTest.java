@@ -59,7 +59,7 @@ public class GiveListDaoTest extends DAOTest {
         authorDao.addAuthor(author);
         bookDao.addAuthorToBook("bookId", "authorId");
         readerDao.addReader(reader);
-        giveListDao.addInGiveList(giveList);
+        giveListDao.openGiveNote(giveList);
 
         final List<GiveNote> giveNotes = giveListDao.listGiveList();
 

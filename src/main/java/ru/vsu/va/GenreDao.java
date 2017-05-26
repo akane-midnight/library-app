@@ -17,8 +17,4 @@ public interface GenreDao extends Transactional<GenreDao> {
     @SqlQuery("SELECT * FROM genres")
     List<Genre> listGenres();
 
-    /*@SqlQuery("SELECT genres.genre_name, books.title FROM book_genre " +
-            "JOIN genres ON genres.genre_id=book_genre.genre_id " +
-            "JOIN books ON books.book_id=book_genre.book_id")
-    List<GenreBook> listBookByGenre();*/
 }
