@@ -21,7 +21,7 @@ public class GiveListDaoTest extends DAOTest {
     }
 
     @Test
-    public void openCloseList() {
+    public void openAndCloseList() {
         final GiveList giveList = new GiveList();
         giveList.setGiveId("giveId");
         giveList.setBookId("bookId");
@@ -62,11 +62,11 @@ public class GiveListDaoTest extends DAOTest {
         giveListDao.openGiveNote(giveList);
         giveListDao.closeGiveNote("giveId", Date.valueOf("1991-06-03"));
 
-        final List<GiveNote> giveNotes = giveListDao.listGiveList();
+        final List<GiveNoteDate> giveNotes = giveListDao.listGiveList();
 
         assertNotNull(giveNotes);
         assertEquals(1, giveNotes.size());
-        final GiveNote result = giveNotes.get(0);
+        final GiveNoteDate result = giveNotes.get(0);
         assertEquals("giveId", result.getGiveId());
         assertEquals("Voina i mir", result.getTitle());
         assertEquals("Tolstoi", result.getAuthorName());

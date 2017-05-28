@@ -9,7 +9,7 @@ import org.skife.jdbi.v2.sqlobject.mixins.Transactional;
 
 import java.util.List;
 
-@RegisterMapper(BookMapper.class)
+@RegisterMapper({BookMapper.class, GiveNoteBookMapper.class})
 public interface BookDao extends Transactional<BookDao> {
     @SqlUpdate("INSERT INTO books (book_id, title, book_year, quantity_page, publisher_id) " +
             "VALUES (:bookId, :title, :bookYear, :quantityPage, :publisherId)")
@@ -45,6 +45,6 @@ public interface BookDao extends Transactional<BookDao> {
             "readers.lastname, readers.firstname FROM book_give_list " +
             //"JOIN books ON books.book_id = book_give_list.book_id " +
             "JOIN readers ON readers.reader_id = book_give_list.reader_id " +
-            "WHERE book_id = :bookId")
-    List<GiveNote> listBookGives(@Bind("book_id") String bookId);
+            "WHERE book_id = :id_book")
+    List<GiveNoteBook> listBookGives(@Bind("id_book") String bookId);
 }

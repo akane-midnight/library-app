@@ -2,6 +2,7 @@ package ru.vsu.va;
 
 import org.junit.Test;
 
+import java.sql.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -274,7 +275,7 @@ public class BookDaoTest extends DAOTest {
         giveList2.setReaderId("readerId2");
         giveList2.setGiveDate(Date.valueOf("2017-03-27"));
         giveList2.setReturnDate(Date.valueOf("2017-04-27"));
-        giveList2.setRealReturnDate(Date.valueOf("2017-04-03"));
+        //giveList2.setRealReturnDate(Date.valueOf("2017-04-13"));
 
 
         publisherDao.addPublisher(publisher);
@@ -283,25 +284,27 @@ public class BookDaoTest extends DAOTest {
         readerDao.addReader(reader2);
         giveListDao.openGiveNote(giveList1);
         giveListDao.openGiveNote(giveList2);
+        giveListDao.closeGiveNote("giveId2", Date.valueOf("2017-04-13"));
 
-        final List<GiveNote> giveNotes = giveListDao.listGiveList();
+        final List<GiveNoteBook> giveNotes = bookDao.listBookGives("bookId");
 
         assertNotNull(giveNotes);
         assertEquals(2, giveNotes.size());
-        final GiveNote result = giveNotes.get(0);
-        assertEquals("giveId1", result.getGiveId());
-        assertEquals(Date.valueOf("2017-05-12"), result.getGiveDate());
-        assertEquals(Date.valueOf("2017-06-12"), result.getReturnDate());
-        assertEquals("Ivanov", result.getReaderLastname());
-        assertEquals("Ivan", result.getReaderFirstname());
 
-        final GiveNote result = giveNotes.get(1);
-        assertEquals("giveId2", result.getGiveId());
-        assertEquals(Date.valueOf("2017-03-27"), result.getGiveDate());
-        assertEquals(Date.valueOf("2017-04-27"), result.getReturnDate());
-        assertEquals(Date.valueOf("2017-04-13"), result.getRealReturnDate());
-        assertEquals("Nikonovich", result.getReaderLastname());
-        assertEquals("Nik", result.getReaderFirstname());
+        final GiveNoteBook result1 = giveNotes.get(0);
+        assertEquals("giveId1", result1.getGiveId());
+        assertEquals(Date.valueOf("2017-05-12"), result1.getGiveDate());
+        assertEquals(Date.valueOf("2017-06-12"), result1.getReturnDate());
+        assertEquals("Ivanov", result1.getReaderLastname());
+        assertEquals("Ivan", result1.getReaderFirstname());
+
+        final GiveNoteBook result2 = giveNotes.get(1);
+        assertEquals("giveId2", result2.getGiveId());
+        assertEquals(Date.valueOf("2017-03-27"), result2.getGiveDate());
+        assertEquals(Date.valueOf("2017-04-27"), result2.getReturnDate());
+        assertEquals(Date.valueOf("2017-04-13"), result2.getRealReturnDate());
+        assertEquals("Nikonovich", result2.getReaderLastname());
+        assertEquals("Nik", result2.getReaderFirstname());
     }
 
 }

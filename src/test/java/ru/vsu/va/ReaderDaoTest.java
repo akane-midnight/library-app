@@ -132,6 +132,7 @@ public class ReaderDaoTest extends DAOTest {
         author.setAuthorId("authorId");
         author.setAuthorLastname("Kerroll");
         author.setAuthorFirstname("L");
+        author.setAuthorFirst(true);
 
         final Publisher publisher = new Publisher();
         publisher.setPublisherId("pubId");
@@ -160,23 +161,25 @@ public class ReaderDaoTest extends DAOTest {
         bookDao.addAuthorToBook("bookId2", "authorId");
         giveListDao.openGiveNote(giveList1);
         giveListDao.openGiveNote(giveList2);
+        giveListDao.closeGiveNote("giveId2", Date.valueOf("2017-06-13"));
 
-        final List<GiveNote> giveNotes = giveListDao.listGiveList();
+        final List<GiveNoteReader> giveNotes = readerDao.listReaderBooks("readerId");
 
         assertNotNull(giveNotes);
         assertEquals(2, giveNotes.size());
-        final GiveNote result = giveNotes.get(0);
-        assertEquals("giveId1", result.getGiveId());
-        assertEquals("Alisa v strane chudes", result.getTitle());
-        assertEquals("Kerroll", result.getAuthorName());
-        assertEquals(Date.valueOf("2017-05-12"), result.getGiveDate());
-        assertEquals(Date.valueOf("2017-06-12"), result.getReturnDate());
-        final GiveNote result = giveNotes.get(1);
-        assertEquals("giveId2", result.getGiveId());
-        assertEquals("Opyat Alisa v zazerkalie", result.getTitle());
-        assertEquals("Kerroll", result.getAuthorName());
-        assertEquals(Date.valueOf("2017-05-27"), result.getGiveDate());
-        assertEquals(Date.valueOf("2017-06-27"), result.getReturnDate());
+        final GiveNoteReader result1 = giveNotes.get(0);
+        assertEquals("giveId1", result1.getGiveId());
+        assertEquals("Alisa v strane chudes", result1.getTitle());
+        assertEquals("Kerroll", result1.getAuthorName());
+        assertEquals(Date.valueOf("2017-05-12"), result1.getGiveDate());
+        assertEquals(Date.valueOf("2017-06-12"), result1.getReturnDate());
+        final GiveNoteReader result2 = giveNotes.get(1);
+        assertEquals("giveId2", result2.getGiveId());
+        assertEquals("Opyat Alisa v zazerkalie", result2.getTitle());
+        assertEquals("Kerroll", result2.getAuthorName());
+        assertEquals(Date.valueOf("2017-05-27"), result2.getGiveDate());
+        assertEquals(Date.valueOf("2017-06-27"), result2.getReturnDate());
+        assertEquals(Date.valueOf("2017-06-13"), result2.getRealReturnDate());
     }
 
 }

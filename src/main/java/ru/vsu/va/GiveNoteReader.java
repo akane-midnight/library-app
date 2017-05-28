@@ -2,13 +2,13 @@ package ru.vsu.va;
 
 import java.sql.Date;
 
-public class GiveList {
+public class GiveNoteReader {
     private String giveId;
-    private String bookId;
-    private String readerId;
+    private String title;
+    private String authorName;
     private Date giveDate;
     private Date returnDate;
-    //private Date realReturnDate;
+    private Date realReturnDate;
 
     public String getGiveId() {
         return giveId;
@@ -18,20 +18,20 @@ public class GiveList {
         this.giveId = giveId;
     }
 
-    public String getBookId() {
-        return bookId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBookId(final String bookId) {
-        this.bookId = bookId;
+    public void setTitle(final String title) {
+        this.title = title;
     }
 
-    public String getReaderId() {
-        return readerId;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setReaderId(final String readerId) {
-        this.readerId = readerId;
+    public void setAuthorName(final String authorName) {
+        this.authorName = authorName;
     }
 
     public Date getGiveDate() {
@@ -50,7 +50,11 @@ public class GiveList {
         this.returnDate = returnDate;
     }
 
-    //public Date getRealReturnDate() { return realReturnDate; }
+    public Date getRealReturnDate() {
+        return realReturnDate;
+    }
 
-    //public void setRealReturnDate(final Date realReturnDate) { this.realReturnDate = realReturnDate; }
+    public void setRealReturnDate(final Date realReturnDate) {
+        this.realReturnDate = realReturnDate;
+    }
 }

@@ -9,7 +9,7 @@ import org.skife.jdbi.v2.sqlobject.mixins.Transactional;
 
 import java.util.List;
 
-@RegisterMapper(ReaderMapper.class)
+@RegisterMapper({ReaderMapper.class, GiveNoteReaderMapper.class})
 public interface ReaderDao extends Transactional<ReaderDao> {
     @SqlUpdate("INSERT INTO readers (reader_id, firstname, lastname, birthday) " +
             "VALUES (:readerId, :firstname, :lastname, :birthday)")
@@ -27,10 +27,10 @@ public interface ReaderDao extends Transactional<ReaderDao> {
     @SqlQuery("SELECT * FROM readers WHERE birthday = :date")
     List<Reader> listReadersByBirthday(@Bind("date") String date);
 
-    @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, book_give_list.give_date, book_give_list.return_date FROM book_give_list " +
+    @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, book_give_list.give_date, book_give_list.return_date, book_give_list.real_return_date FROM book_give_list " +
             "JOIN books ON books.book_id = book_give_list.book_id " +
             "JOIN book_author ON book_author.book_id = book_give_list.book_id " +
             "JOIN authors ON authors.author_id = book_author.author_id " +
-            "WHERE author_first = true AND reader_id = :readerId")
-    List<GiveNote> listReaderBooks(@Bind("reader_id") String readerId);
+            "WHERE author_first = true AND reader_id = :id_reader")
+    List<GiveNoteReader> listReaderBooks(@Bind("id_reader") String readerId);
 }

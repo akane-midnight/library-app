@@ -2,7 +2,7 @@ package ru.vsu.va;
 
 import java.sql.Date;
 
-public class GiveNote {
+public class GiveNoteDate {
     private String giveId;
     private String title;
     private String authorName;

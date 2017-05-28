@@ -4,6 +4,9 @@ package ru.vsu.va;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class BookExemplarMapper implements ResultSetMapper<BookExemplar> {
     public BookExemplar map(final int i,
                     final ResultSet resultSet,

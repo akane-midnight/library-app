@@ -7,6 +7,8 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import org.skife.jdbi.v2.sqlobject.mixins.Transactional;
 
+import java.util.List;
+
 @RegisterMapper(BookExemplarMapper.class)
 public interface BookExemplarDao extends Transactional<BookExemplarDao> {
     @SqlUpdate("INSERT INTO book_exemplars (book_exemplar_id, description, book_id) " +
