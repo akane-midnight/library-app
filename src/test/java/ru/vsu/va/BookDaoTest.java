@@ -11,6 +11,9 @@ public class BookDaoTest extends DAOTest {
     private final PublisherDao publisherDao = dbi.onDemand(PublisherDao.class);
     private final AuthorDao authorDao = dbi.onDemand(AuthorDao.class);
     private final GenreDao genreDao = dbi.onDemand(GenreDao.class);
+    private final ReaderDao readerDao = dbi.onDemand(ReaderDao.class);
+    private final GiveListDao giveListDao = dbi.onDemand(GiveListDao.class);
+
 
     @Test
     public void empty() {
@@ -232,6 +235,73 @@ public class BookDaoTest extends DAOTest {
         assertEquals("2006", result2.getBookYear());
         assertEquals("65", result2.getQuantityPage());
         assertEquals("pubId", result2.getPublisherId());
+    }
+
+    @Test
+    public void listBookGives(){
+        final Reader reader1 = new Reader();
+        reader1.setReaderId("readerId1");
+        reader1.setFirstname("Ivan");
+        reader1.setLastname("Ivanov");
+        reader1.setBirthday(Date.valueOf("1991-07-12"));
+        final Reader reader2 = new Reader();
+        reader2.setReaderId("readerId2");
+        reader2.setFirstname("Nik");
+        reader2.setLastname("Nikonovich");
+        reader2.setBirthday(Date.valueOf("1993-08-22"));
+
+        final Book book = new Book();
+        book.setBookId("bookId");
+        book.setTitle("Alisa v strane chudes");
+        book.setBookYear("2003");
+        book.setQuantityPage("63");
+        book.setPublisherId("pubId");
+
+        final Publisher publisher = new Publisher();
+        publisher.setPublisherId("pubId");
+        publisher.setPublisherName("Eksmo");
+        publisher.setPublisherCity("Moskva");
+
+        final GiveList giveList1 = new GiveList();
+        giveList1.setGiveId("giveId1");
+        giveList1.setBookId("bookId");
+        giveList1.setReaderId("readerId1");
+        giveList1.setGiveDate(Date.valueOf("2017-05-12"));
+        giveList1.setReturnDate(Date.valueOf("2017-06-12"));
+        final GiveList giveList2 = new GiveList();
+        giveList2.setGiveId("giveId2");
+        giveList2.setBookId("bookId");
+        giveList2.setReaderId("readerId2");
+        giveList2.setGiveDate(Date.valueOf("2017-03-27"));
+        giveList2.setReturnDate(Date.valueOf("2017-04-27"));
+        giveList2.setRealReturnDate(Date.valueOf("2017-04-03"));
+
+
+        publisherDao.addPublisher(publisher);
+        bookDao.addBook(book);
+        readerDao.addReader(reader1);
+        readerDao.addReader(reader2);
+        giveListDao.openGiveNote(giveList1);
+        giveListDao.openGiveNote(giveList2);
+
+        final List<GiveNote> giveNotes = giveListDao.listGiveList();
+
+        assertNotNull(giveNotes);
+        assertEquals(2, giveNotes.size());
+        final GiveNote result = giveNotes.get(0);
+        assertEquals("giveId1", result.getGiveId());
+        assertEquals(Date.valueOf("2017-05-12"), result.getGiveDate());
+        assertEquals(Date.valueOf("2017-06-12"), result.getReturnDate());
+        assertEquals("Ivanov", result.getReaderLastname());
+        assertEquals("Ivan", result.getReaderFirstname());
+
+        final GiveNote result = giveNotes.get(1);
+        assertEquals("giveId2", result.getGiveId());
+        assertEquals(Date.valueOf("2017-03-27"), result.getGiveDate());
+        assertEquals(Date.valueOf("2017-04-27"), result.getReturnDate());
+        assertEquals(Date.valueOf("2017-04-13"), result.getRealReturnDate());
+        assertEquals("Nikonovich", result.getReaderLastname());
+        assertEquals("Nik", result.getReaderFirstname());
     }
 
 }

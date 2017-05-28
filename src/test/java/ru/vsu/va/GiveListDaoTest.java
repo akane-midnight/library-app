@@ -21,14 +21,14 @@ public class GiveListDaoTest extends DAOTest {
     }
 
     @Test
-    public void addAndList() {
+    public void openCloseList() {
         final GiveList giveList = new GiveList();
         giveList.setGiveId("giveId");
         giveList.setBookId("bookId");
         giveList.setReaderId("readerId");
         giveList.setGiveDate(Date.valueOf("2017-05-12"));
         giveList.setReturnDate(Date.valueOf("2017-06-12"));
-        //giveList.setRealReturnDate(Date.valueOf("1991-07-12"));
+        //giveList.setRealReturnDate(Date.valueOf("1991-06-03"));
 
         final Book book = new Book();
         book.setBookId("bookId");
@@ -60,6 +60,7 @@ public class GiveListDaoTest extends DAOTest {
         bookDao.addAuthorToBook("bookId", "authorId");
         readerDao.addReader(reader);
         giveListDao.openGiveNote(giveList);
+        giveListDao.closeGiveNote("giveId", Date.valueOf("1991-06-03"));
 
         final List<GiveNote> giveNotes = giveListDao.listGiveList();
 
@@ -73,6 +74,7 @@ public class GiveListDaoTest extends DAOTest {
         assertEquals("Nik", result.getReaderFirstname());
         assertEquals(Date.valueOf("2017-05-12"), result.getGiveDate());
         assertEquals(Date.valueOf("2017-06-12"), result.getReturnDate());
+        assertEquals(Date.valueOf("2017-06-03"), result.getRealReturnDate());
     }
 
 }

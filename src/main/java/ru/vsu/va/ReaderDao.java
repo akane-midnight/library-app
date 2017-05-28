@@ -26,4 +26,11 @@ public interface ReaderDao extends Transactional<ReaderDao> {
 
     @SqlQuery("SELECT * FROM readers WHERE birthday = :date")
     List<Reader> listReadersByBirthday(@Bind("date") String date);
+
+    @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, book_give_list.give_date, book_give_list.return_date FROM book_give_list " +
+            "JOIN books ON books.book_id = book_give_list.book_id " +
+            "JOIN book_author ON book_author.book_id = book_give_list.book_id " +
+            "JOIN authors ON authors.author_id = book_author.author_id " +
+            "WHERE author_first = true AND reader_id = :readerId")
+    List<GiveNote> listReaderBooks(@Bind("reader_id") String readerId);
 }

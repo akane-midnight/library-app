@@ -19,7 +19,7 @@ public interface GiveListDao extends Transactional<GiveListDao> {
     @SqlUpdate("UPDATE book_give_list " +
             "SET real_return_date = :realReturnDate " +
             "WHERE give_id = :id_give")
-    void closeGiveNote(@Bind("id_give") String giveId);
+    void closeGiveNote(@Bind("id_give") String giveId, @Bind("real_return_date") Date realReturnDate);
 
     @SqlQuery("SELECT book_give_list.give_id, books.title, authors.author_lastname, readers.lastname, " +
             "readers.firstname, book_give_list.give_date, book_give_list.return_date, " +

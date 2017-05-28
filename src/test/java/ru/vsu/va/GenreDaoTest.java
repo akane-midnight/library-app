@@ -35,37 +35,4 @@ public class GenreDaoTest extends DAOTest {
         assertEquals("genreId", result.getGenreId());
         assertEquals("Rasskaz", result.getGenreName());
     }
-
-    /*@Test
-    public void listBookByGenre() {
-        final Genre genre = new Genre();
-        genre.setGenreId("genreId");
-        genre.setGenreName("Rasskaz");
-
-        final Book book = new Book();
-        book.setBookId("bookId");
-        book.setTitle("Maugli");
-        book.setBookYear("2003");
-        book.setQuantityPage("654");
-        book.setPublisherId("pubId");
-
-        final Publisher publisher = new Publisher();
-        publisher.setPublisherId("pubId");
-        publisher.setPublisherName("Eksmo");
-        publisher.setPublisherCity("Moskva");
-
-        genreDao.addGenre(genre);
-        publisherDao.addPublisher(publisher);
-        bookDao.addBook(book);
-        bookDao.addGenreToBook("bookId", "genreId");
-
-        final List<GenreBook> genreBook = genreDao.listBookByGenre();
-
-        assertNotNull(genreBook);
-        assertEquals(1, genreBook.size());
-        final GenreBook result = genreBook.get(0);
-        assertEquals("Rasskaz", result.getGenreName());
-        assertEquals("Maugli", result.getBookTitle());
-
-    }*/
 }

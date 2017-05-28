@@ -41,4 +41,10 @@ public interface BookDao extends Transactional<BookDao> {
             "WHERE author_lastname = :author")
     List<Book> listBooksByAuthor(@Bind("author") String author);
 
+    @SqlQuery("SELECT book_give_list.give_id, book_give_list.give_date, book_give_list.return_date, book_give_list.real_return_date, " +
+            "readers.lastname, readers.firstname FROM book_give_list " +
+            //"JOIN books ON books.book_id = book_give_list.book_id " +
+            "JOIN readers ON readers.reader_id = book_give_list.reader_id " +
+            "WHERE book_id = :bookId")
+    List<GiveNote> listBookGives(@Bind("book_id") String bookId);
 }
