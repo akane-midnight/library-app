@@ -132,7 +132,6 @@ public class ReaderDaoTest extends DAOTest {
         author.setAuthorId("authorId");
         author.setAuthorLastname("Kerroll");
         author.setAuthorFirstname("L");
-        author.setAuthorFirst(true);
 
         final Publisher publisher = new Publisher();
         publisher.setPublisherId("pubId");

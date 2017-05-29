@@ -11,21 +11,24 @@ import java.util.List;
 
 @RegisterMapper(AuthorMapper.class)
 public interface AuthorDao extends Transactional<AuthorDao> {
-    @SqlUpdate("INSERT INTO authors (author_id, author_lastname, author_firstname, author_first) " +
-            "VALUES (:authorId, :authorLastname, :authorFirstname, :authorFirst)")
+    @SqlUpdate("INSERT INTO authors (author_id, author_lastname, author_firstname) " +
+            "VALUES (:authorId, :authorLastname, :authorFirstname)")
     void addAuthor(@BindBean Author author);
 
     @SqlQuery("SELECT * FROM authors")
-    List<Author> listAuthor();
+    List<Author> listAuthors();
 
 
     @SqlQuery("SELECT * FROM authors WHERE author_id = :authorId")
     Author getAuthor(@Bind("authorId") String authorId);
 
+    @SqlQuery("SELECT * FROM authors WHERE author_lastname = :author_lastname")
+    Author getAuthorByLastname(@Bind("author_lastname") String authorLastname);
+
     @SqlQuery("SELECT * FROM authors WHERE author_lastname = :name")
     List<Author> listAuthorByLastname(@Bind("name") String name);
 
     @SqlQuery("SELECT * FROM authors WHERE author_lastname LIKE :letter")
-    List<Author> listAuthorByLetter(@Bind("letter") String letter);
+    List<Author> listAuthorsByLetter(@Bind("letter") String letter);
 
 }

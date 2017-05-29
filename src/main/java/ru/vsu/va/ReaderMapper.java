@@ -12,8 +12,8 @@ public class ReaderMapper implements ResultSetMapper<Reader> {
                       final StatementContext statementContext) throws SQLException {
         final Reader result = new Reader();
         result.setReaderId(resultSet.getString("reader_id"));
-        result.setFirstname(resultSet.getString("firstname"));
         result.setLastname(resultSet.getString("lastname"));
+        result.setFirstname(resultSet.getString("firstname"));
         result.setBirthday(resultSet.getDate("birthday"));
         return result;
     }

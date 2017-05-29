@@ -4,7 +4,6 @@ public class Author {
     private String authorId;
     private String authorLastname;
     private String authorFirstname;
-    private Boolean authorFirst;
 
     public String getAuthorId() {
         return authorId;
@@ -28,13 +27,5 @@ public class Author {
 
     public void setAuthorFirstname(final String authorFirstname) {
         this.authorFirstname = authorFirstname;
-    }
-
-    public Boolean getAuthorFirst() {
-        return authorFirst;
-    }
-
-    public void setAuthorFirst(final Boolean authorFirst) {
-        this.authorFirst = authorFirst;
     }
 }

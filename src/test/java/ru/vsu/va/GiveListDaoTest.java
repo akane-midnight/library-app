@@ -48,7 +48,6 @@ public class GiveListDaoTest extends DAOTest {
         author.setAuthorId("authorId");
         author.setAuthorLastname("Tolstoi");
         author.setAuthorFirstname("Lev");
-        author.setAuthorFirst(true);
 
         final Publisher publisher = new Publisher();
         publisher.setPublisherId("pubId");

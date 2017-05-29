@@ -14,7 +14,6 @@ public class AuthorMapper implements ResultSetMapper<Author> {
         result.setAuthorId(resultSet.getString("author_id"));
         result.setAuthorLastname(resultSet.getString("author_lastname"));
         result.setAuthorFirstname(resultSet.getString("author_firstname"));
-        result.setAuthorFirst(resultSet.getBoolean("author_first"));
         return result;
     }
 }

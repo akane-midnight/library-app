@@ -10,10 +10,10 @@
             <column name="reader_id" type="varchar(50)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="firstname" type="varchar(50)">
+            <column name="lastname" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="lastname" type="varchar(50)">
+            <column name="firstname" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
             <column name="birthday" type="date">
@@ -42,9 +42,6 @@
             </column>
             <column name="author_firstname" type="varchar(50)">
                 <constraints nullable="false"/>
-            </column>
-            <column name="author_first" type="bit">
-                <constraints nullable="true"/>
             </column>
         </createTable>
 

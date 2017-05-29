@@ -1,5 +1,6 @@
 package ru.vsu.va;
 
+import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
@@ -15,5 +16,14 @@ public interface PublisherDao extends Transactional<PublisherDao> {
     void addPublisher(@BindBean Publisher publisher);
 
     @SqlQuery("SELECT * FROM publishers")
-    List<Publisher> listPublisher();
+    List<Publisher> listPublishers();
+
+    /*@SqlQuery("SELECT * FROM publishers WHERE publisher_name = :p_name")
+    List<Publisher> listPublishersByName(@Bind("p_name") String pName);*/
+
+    @SqlQuery("SELECT * FROM publishers WHERE publisher_city = :p_city")
+    List<Publisher> listPublishersByCity(@Bind("p_city") String pCity);
+
+    @SqlQuery("SELECT * FROM publishers WHERE publisher_name = :p_name")
+    Publisher getPublisherByName(@Bind("p_name") String pName);
 }

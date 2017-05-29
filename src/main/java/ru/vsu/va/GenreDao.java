@@ -19,7 +19,10 @@ public interface GenreDao extends Transactional<GenreDao> {
     List<Genre> listGenres();
 
 
-    @SqlQuery("SELECT * FROM genress WHERE genre_id = :genreId")
-    Author getGenre(@Bind("genreId") String genreId);
+    @SqlQuery("SELECT * FROM genres WHERE genre_id = :genreId")
+    Genre getGenre(@Bind("genreId") String genreId);
+
+    @SqlQuery("SELECT * FROM genres WHERE genre_name = :genre_name")
+    Genre getGenreByName(@Bind("genre_name") String genreName);
 
 }
