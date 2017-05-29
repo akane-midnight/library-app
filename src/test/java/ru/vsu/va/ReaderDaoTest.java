@@ -119,13 +119,13 @@ public class ReaderDaoTest extends DAOTest {
         book1.setBookId("bookId1");
         book1.setTitle("Alisa v strane chudes");
         book1.setBookYear("2003");
-        book1.setQuantityPage("63");
+        book1.setQuantityPage(63);
         book1.setPublisherId("pubId");
         final Book book2 = new Book();
         book2.setBookId("bookId2");
         book2.setTitle("Opyat Alisa v zazerkalie");
         book2.setBookYear("2006");
-        book2.setQuantityPage("65");
+        book2.setQuantityPage(65);
         book2.setPublisherId("pubId");
 
         final Author author = new Author();

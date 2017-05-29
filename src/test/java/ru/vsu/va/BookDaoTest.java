@@ -27,7 +27,7 @@ public class BookDaoTest extends DAOTest {
         book.setBookId("bookId");
         book.setTitle("Maugli");
         book.setBookYear("2003");
-        book.setQuantityPage("654");
+        book.setQuantityPage(654);
         book.setPublisherId("pubId");
 
         final Publisher publisher = new Publisher();
@@ -59,7 +59,7 @@ public class BookDaoTest extends DAOTest {
         assertEquals("bookId", result.getBookId());
         assertEquals("Maugli", result.getTitle());
         assertEquals("2003", result.getBookYear());
-        assertEquals("654", result.getQuantityPage());
+        assertEquals(654, result.getQuantityPage());
         assertEquals("pubId", result.getPublisherId());
     }
 
@@ -69,19 +69,19 @@ public class BookDaoTest extends DAOTest {
         book1.setBookId("bookId1");
         book1.setTitle("Alisa v strane chudes");
         book1.setBookYear("2003");
-        book1.setQuantityPage("63");
+        book1.setQuantityPage(63);
         book1.setPublisherId("pubId");
         final Book book2 = new Book();
         book2.setBookId("bookId2");
         book2.setTitle("Opyat Alisa v zazerkalie");
         book2.setBookYear("2006");
-        book2.setQuantityPage("65");
+        book2.setQuantityPage(65);
         book2.setPublisherId("pubId");
         final Book book3 = new Book();
         book3.setBookId("bookId3");
         book3.setTitle("Vii");
         book3.setBookYear("2001");
-        book3.setQuantityPage("163");
+        book3.setQuantityPage(163);
         book3.setPublisherId("pubId");
 
         final Publisher publisher = new Publisher();
@@ -102,13 +102,13 @@ public class BookDaoTest extends DAOTest {
         assertEquals("bookId1", result1.getBookId());
         assertEquals("Alisa v strane chudes", result1.getTitle());
         assertEquals("2003", result1.getBookYear());
-        assertEquals("63", result1.getQuantityPage());
+        assertEquals(63, result1.getQuantityPage());
         assertEquals("pubId", result1.getPublisherId());
         final Book result2 = books.get(1);
         assertEquals("bookId2", result2.getBookId());
         assertEquals("Opyat Alisa v zazerkalie", result2.getTitle());
         assertEquals("2006", result2.getBookYear());
-        assertEquals("65", result2.getQuantityPage());
+        assertEquals(65, result2.getQuantityPage());
         assertEquals("pubId", result2.getPublisherId());
     }
 
@@ -118,19 +118,19 @@ public class BookDaoTest extends DAOTest {
         book1.setBookId("bookId1");
         book1.setTitle("Voina i mir");
         book1.setBookYear("1998");
-        book1.setQuantityPage("1603");
+        book1.setQuantityPage(1603);
         book1.setPublisherId("pubId");
         final Book book2 = new Book();
         book2.setBookId("bookId2");
         book2.setTitle("Opyat Alisa v zazerkalie");
         book2.setBookYear("2006");
-        book2.setQuantityPage("65");
+        book2.setQuantityPage(65);
         book2.setPublisherId("pubId");
         final Book book3 = new Book();
         book3.setBookId("bookId3");
         book3.setTitle("Evgenii Onegin");
         book3.setBookYear("1983");
-        book3.setQuantityPage("213");
+        book3.setQuantityPage(213);
         book3.setPublisherId("pubId");
 
         final Publisher publisher = new Publisher();
@@ -164,13 +164,13 @@ public class BookDaoTest extends DAOTest {
         assertEquals("bookId1", result1.getBookId());
         assertEquals("Voina i mir", result1.getTitle());
         assertEquals("1998", result1.getBookYear());
-        assertEquals("1603", result1.getQuantityPage());
+        assertEquals(1603, result1.getQuantityPage());
         assertEquals("pubId", result1.getPublisherId());
         final Book result2 = books.get(1);
         assertEquals("bookId3", result2.getBookId());
         assertEquals("Evgenii Onegin", result2.getTitle());
         assertEquals("1983", result2.getBookYear());
-        assertEquals("213", result2.getQuantityPage());
+        assertEquals(213, result2.getQuantityPage());
         assertEquals("pubId", result2.getPublisherId());
     }
 
@@ -180,19 +180,19 @@ public class BookDaoTest extends DAOTest {
         book1.setBookId("bookId1");
         book1.setTitle("Alisa v strane chudes");
         book1.setBookYear("2003");
-        book1.setQuantityPage("63");
+        book1.setQuantityPage(63);
         book1.setPublisherId("pubId");
         final Book book2 = new Book();
         book2.setBookId("bookId2");
         book2.setTitle("Opyat Alisa v zazerkalie");
         book2.setBookYear("2006");
-        book2.setQuantityPage("65");
+        book2.setQuantityPage(65);
         book2.setPublisherId("pubId");
         final Book book3 = new Book();
         book3.setBookId("bookId3");
         book3.setTitle("Evgenii Onegin");
         book3.setBookYear("1983");
-        book3.setQuantityPage("213");
+        book3.setQuantityPage(213);
         book3.setPublisherId("pubId");
 
         final Publisher publisher = new Publisher();
@@ -228,13 +228,13 @@ public class BookDaoTest extends DAOTest {
         assertEquals("bookId1", result1.getBookId());
         assertEquals("Alisa v strane chudes", result1.getTitle());
         assertEquals("2003", result1.getBookYear());
-        assertEquals("63", result1.getQuantityPage());
+        assertEquals(63, result1.getQuantityPage());
         assertEquals("pubId", result1.getPublisherId());
         final Book result2 = books.get(1);
         assertEquals("bookId2", result2.getBookId());
         assertEquals("Opyat Alisa v zazerkalie", result2.getTitle());
         assertEquals("2006", result2.getBookYear());
-        assertEquals("65", result2.getQuantityPage());
+        assertEquals(65, result2.getQuantityPage());
         assertEquals("pubId", result2.getPublisherId());
     }
 
@@ -255,7 +255,7 @@ public class BookDaoTest extends DAOTest {
         book.setBookId("bookId");
         book.setTitle("Alisa v strane chudes");
         book.setBookYear("2003");
-        book.setQuantityPage("63");
+        book.setQuantityPage(63);
         book.setPublisherId("pubId");
 
         final Publisher publisher = new Publisher();

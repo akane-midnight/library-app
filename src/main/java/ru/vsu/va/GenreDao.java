@@ -1,5 +1,6 @@
 package ru.vsu.va;
 
+import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
@@ -16,5 +17,9 @@ public interface GenreDao extends Transactional<GenreDao> {
 
     @SqlQuery("SELECT * FROM genres")
     List<Genre> listGenres();
+
+
+    @SqlQuery("SELECT * FROM genress WHERE genre_id = :genreId")
+    Author getGenre(@Bind("genreId") String genreId);
 
 }

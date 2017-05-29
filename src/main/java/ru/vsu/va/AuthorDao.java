@@ -18,6 +18,10 @@ public interface AuthorDao extends Transactional<AuthorDao> {
     @SqlQuery("SELECT * FROM authors")
     List<Author> listAuthor();
 
+
+    @SqlQuery("SELECT * FROM authors WHERE author_id = :authorId")
+    Author getAuthor(@Bind("authorId") String authorId);
+
     @SqlQuery("SELECT * FROM authors WHERE author_lastname = :name")
     List<Author> listAuthorByLastname(@Bind("name") String name);
 

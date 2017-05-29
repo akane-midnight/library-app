@@ -4,7 +4,7 @@ public class Book {
     private String bookId;
     private String title;
     private String bookYear;
-    private String quantityPage;
+    private int quantityPage;
     private String publisherId;
 
     public String getBookId() {
@@ -31,11 +31,11 @@ public class Book {
         this.bookYear = bookYear;
     }
 
-    public String getQuantityPage() {
+    public int getQuantityPage() {
         return quantityPage;
     }
 
-    public void setQuantityPage(final String quantityPage) {
+    public void setQuantityPage(final int quantityPage) {
         this.quantityPage = quantityPage;
     }
 

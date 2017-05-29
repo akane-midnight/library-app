@@ -28,8 +28,8 @@ public interface GiveListDao extends Transactional<GiveListDao> {
             "JOIN book_author ON book_author.book_id = book_give_list.book_id " +
             "JOIN authors ON authors.author_id = book_author.author_id " +
             "JOIN readers ON readers.reader_id = book_give_list.reader_id " +
-            "WHERE author_first = true")
-    List<GiveNoteDate> listGiveList();
+            "WHERE author_first = true AND give_date = :date")
+    List<GiveNoteDate> listGiveListByDate(@Bind("date") Date Date);
 
     @SqlQuery("SELECT book_give_list.give_id, books.title, readers.lastname, readers.firstname, " +
             "book_give_list.give_date, book_give_list.return_date, book_give_list.real_return_date " +

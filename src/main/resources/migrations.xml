@@ -67,7 +67,7 @@
             <column name="book_year" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="quantity_page" type="varchar(50)">
+            <column name="quantity_page" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="publisher_id" type="varchar(50)">

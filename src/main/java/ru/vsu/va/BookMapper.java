@@ -14,7 +14,7 @@ public class BookMapper implements ResultSetMapper<Book> {
         result.setBookId(resultSet.getString("book_id"));
         result.setTitle(resultSet.getString("title"));
         result.setBookYear(resultSet.getString("book_year"));
-        result.setQuantityPage(resultSet.getString("quantity_page"));
+        result.setQuantityPage(resultSet.getInt("quantity_page"));
         result.setPublisherId(resultSet.getString("publisher_id"));
         return result;
     }
